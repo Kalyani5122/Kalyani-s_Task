@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Radio Accordion Boxes</title>
+ 
+<style>
+body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+  justify-content: center;
+}
+ 
+.container {
+  max-width: 400px;
+  margin: auto;
+}
+ 
+.box {
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+ 
+/* collapsed */
+.box.small {
+  height: 45px;
+}
+ 
+/* expanded */
+.box.active {
+  height: auto;
+  border-color: #ff5c8a;
+  background: #fff4f7;
+}
+ 
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+ 
+.header label {
+  font-weight: bold;
+}
+ 
+/* RADIO COLOR */
+input[type="radio"] {
+  accent-color: #ff5c8a;
+}
+ 
+/* DROPDOWNS */
+.dropdowns {
+  display: none;
+  margin-top: 5px;
+  flex-direction: column;
+}
+ 
+.box.active .dropdowns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 5px;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;  
+}
+ 
+h4 {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #ff5c8a;
+  grid-column: span 2;
+}
+ 
+select {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+ 
+select:focus {
+  outline: none;
+  border-color: #ff5c8a;
+}
+
+.badge {
+      background: #ff5c8a;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+}
+ 
+.popular {
+      background: #ff5c8a;
+      color: white;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+}
+ 
+.price del {
+      color: #999;
+      font-size: 12px;
+}
+.footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      font-weight: bold;
+}  
+.free {
+      color: #ff5c8a;
+}
+ 
+button {
+      width: 100%;
+      background: #ff5c8a;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+}
+ 
+button:hover {
+      background: #e94b76;
+}
+ 
+.powered {
+      text-align: right;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 8px;
+} 
+h2 {
+      text-align: center;
+      color: #ff5c8a;
+      margin-bottom: 20px;
+}
+ .line-text{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family:  Arial,sans-serif;
+    font-weight: 600;
+    color: #ff6b81;
+    margin: 20px 0;
+    justify-content: center;
+}
+.line-text::before,
+.line-text::after{
+    content: "";
+    flex: 0 0 100px;
+    width: 10px;
+    height: 1px;
+    background: #ddd;
+} 
+.line-text::before{
+    margin-right: 10px;
+}
+.line-text::after{
+    margin-left: 10px;
+}
+ .dropdown-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+    max-width: 400px;
+    margin: 40px auto;
+ }
+ .dropdown-container select{
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+ }
+</style>
+</head>
+ 
+<body>
+   <h2 class="line-text">YAY! It’s BOGO</h2>
+<div class="container">
+ 
+  <div class="box small">
+    <!-- <div class="header">
+      <input type="radio" name="option" onclick="activate(this)">
+      <label>Option 1</label>
+    </div> -->
+    <div class="row">
+    <div>
+      <input type="radio" name="option" onclick="activate(this)">
+      <strong>1 Unit</strong>
+      <span class="badge">10% Off</span>
+      <div><span>Standard Price</span></div>
+    </div>
+    <div class="price">
+      $10.00 USD<br>
+      <del>$24.00 USD</del>
+    </div>
+  </div>
+ 
+    <!-- <div class="dropdown-container">
+      <h4>Color</h4>
+      <select>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+        </select>
+        <select>
+          <option>Black</option>
+          <option>Red</option>
+          <option>Blue</option>
+        </select>
+        <h4>Color</h4>
+        <select>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+        </select>
+        <select>
+          <option>Black</option>
+          <option>Red</option>
+          <option>Blue</option>
+        </select>
+    </div> -->
+    <div class="dropdowns">
+      <h4>Size</h4>
+      <select>
+        <option>#1 Small</option>
+        <option>#1 Medium</option>
+        <option>#1 Large</option>
+      </select>
+ 
+      <select>
+        <option>#2 Small</option>
+        <option>#2 Medium</option>
+        <option>#2 Large</option>
+      </select>
+ 
+      <h4>Color</h4>
+      <select>
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Green</option>
+      </select>
+ 
+      <select>
+        <option>Black</option>
+        <option>White</option>
+        <option>Grey</option>
+      </select>
+    </div>
+  </div>
+ 
+  <div class="box small">
+    <div class="row">
+    <div>
+      <input type="radio" name="option" onclick="activate(this)">
+      <strong>2 Unit</strong>
+      <span class="badge">20% Off</span>
+    </div>
+    <div class="price">
+      $18.00 USD<br>
+      <del>$24.00 USD</del>
+    </div>
+  </div>
+ 
+    <div class="dropdowns">
+      <h4>Size</h4>
+      <select>
+        <option>#1 Small</option>
+        <option>#1 Medium</option>
+        <option>#1 Large</option>
+      </select>
+ 
+      <select>
+        <option>#2 Small</option>
+        <option>#2 Medium</option>
+        <option>#2 Large</option>
+      </select>
+ 
+      <h4>Color</h4>
+      <select>
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Green</option>
+      </select>
+ 
+      <select>
+        <option>Black</option>
+        <option>White</option>
+        <option>Grey</option>
+      </select>
+    </div>
+  </div>
+ 
+  <div class="box small">
+    <!-- <div class="header">
+      <input type="radio" name="option" onclick="activate(this)">
+      <label>Option 3</label>
+    </div> -->
+    <div class="row">
+    <div>
+      <input type="radio" name="option" onclick="activate(this)">
+      <strong>3 Unit</strong>
+      <span class="badge">30% Off</span>
+    </div>
+    <div class="price">
+      $24.00 USD<br>
+      <del>$24.00 USD</del>
+    </div>
+  </div>
+ 
+    <div class="dropdowns">
+      <h4>Size</h4>
+      <select>
+        <option>#1 Small</option>
+        <option>#1 Medium</option>
+        <option>#1 Large</option>
+      </select>
+ 
+      <select>
+        <option>#2 Small</option>
+        <option>#2 Medium</option>
+        <option>#2 Large</option>
+      </select>
+ 
+      <h4>Color</h4>
+      <select>
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Green</option>
+      </select>
+ 
+      <select>
+        <option>Black</option>
+        <option>White</option>
+        <option>Grey</option>
+      </select>
+    </div>
+  </div>
+   <div class="footer">
+    <span class="free">Free Delivery</span>
+    <span>Total: $<span id="total">18.00</span></span>
+  </div>
+ 
+  <button>+ Add to Cart</button>
+  <div class="powered">@ Powered by Pumper</div>
+</div>
+ 
+</div>
+ 
+<script>
+  function activate(radio) {
+    var boxes = document.querySelectorAll('.box');
+ 
+    boxes.forEach(function (box) {
+      box.classList.remove('active');
+      box.classList.add('small');
+    });
+ 
+    var currentBox = radio.closest('.box');
+    currentBox.classList.add('active');
+    currentBox.classList.remove('small');
+  }
+</script>
+ 
+</body>
+</html>
+    </div>
+  </div>
+</div>
+ 
+<script>
+  function activateBox(radio) {
+    document.querySelectorAll('.box').forEach(box => {
+      box.classList.remove('active');
+    });
+ 
+    radio.closest('.box').classList.add('active');
+  }
+</script>
+ 
+</body>
+</html>
+
